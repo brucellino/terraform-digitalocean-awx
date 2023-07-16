@@ -15,6 +15,7 @@
 | Name | Version |
 |------|---------|
 | <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | 2.28.1 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.10.1 |
 
 ## Modules
 
@@ -26,6 +27,8 @@ No modules.
 |------|------|
 | [digitalocean_database_cluster.awx_pg](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/database_cluster) | resource |
 | [digitalocean_database_firewall.k8s](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/database_firewall) | resource |
+| [digitalocean_database_user.awx_admin](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/database_user) | resource |
+| [helm_release.redis](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [digitalocean_kubernetes_cluster.selected](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/kubernetes_cluster) | data source |
 | [digitalocean_project.awx](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/project) | data source |
 | [digitalocean_vpc.awx](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/vpc) | data source |

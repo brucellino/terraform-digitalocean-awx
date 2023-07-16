@@ -31,8 +31,11 @@ resource "digitalocean_database_firewall" "k8s" {
   }
 }
 
-# Redis DB -- operator doesn't seem to handle that.
 
+resource "digitalocean_database_user" "awx_admin" {
+  cluster_id = digitalocean_database_cluster.awx_pg.id
+  name       = "awx"
+}
 # conection string
 
 # vault mount
@@ -40,30 +43,25 @@ resource "digitalocean_database_firewall" "k8s" {
 # vault role
 
 
-# resource "helm_release" "redis" {
-#   name = "my-redis-release"
-#   # repository = "https://charts.bitnami.com/bitnami"
-#   # chart      = "redis"
-#   # version    = "17.13.1"
-#   chart = "https://charts.bitnami.com/bitnami/redis-10.7.16.tgz"
+resource "helm_release" "redis" {
+  name       = "my-redis-release"
+  repository = "https://charts.bitnami.com/bitnami"
+  chart      = "awx-operator/awx-operator"
+  version    = "2.4.0"
 
-#   values = [
-#     "${file("${path.module}/files/redis-values.yaml")}"
-#   ]
+  # set {
+  #   name  = "cluster.enabled"
+  #   value = "true"
+  # }
 
-#   set {
-#     name  = "cluster.enabled"
-#     value = "true"
-#   }
+  # set {
+  #   name  = "metrics.enabled"
+  #   value = "true"
+  # }
 
-#   set {
-#     name  = "metrics.enabled"
-#     value = "true"
-#   }
-
-#   set {
-#     name  = "service.annotations.prometheus\\.io/port"
-#     value = "9127"
-#     type  = "string"
-#   }
-# }
+  # set {
+  #   name  = "service.annotations.prometheus\\.io/port"
+  #   value = "9127"
+  #   type  = "string"
+  # }
+}
