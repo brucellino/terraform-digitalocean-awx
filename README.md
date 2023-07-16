@@ -12,7 +12,9 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_digitalocean"></a> [digitalocean](#provider\_digitalocean) | 2.28.1 |
 
 ## Modules
 
@@ -20,11 +22,23 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [digitalocean_database_cluster.awx_pg](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/database_cluster) | resource |
+| [digitalocean_database_firewall.k8s](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/database_firewall) | resource |
+| [digitalocean_kubernetes_cluster.selected](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/kubernetes_cluster) | data source |
+| [digitalocean_project.awx](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/project) | data source |
+| [digitalocean_vpc.awx](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/data-sources/vpc) | data source |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of k8s cluster to deploy into | `string` | n/a | yes |
+| <a name="input_db_size"></a> [db\_size](#input\_db\_size) | Size of the DB instances | `string` | `"db-s-1vcpu-1gb"` | no |
+| <a name="input_pg_cluster_node_count"></a> [pg\_cluster\_node\_count](#input\_pg\_cluster\_node\_count) | Number of nodes in the postgres cluster | `number` | `1` | no |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Name of the digitalocean project to assign resources to | `string` | n/a | yes |
+| <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | Name of the Digitalocean VPC to be used when creating resources | `string` | n/a | yes |
 
 ## Outputs
 
