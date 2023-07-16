@@ -18,3 +18,8 @@ variable "project" {
     purpose     = "personal"
   }
 }
+
+variable "cluster_name" {
+  type    = string
+  default = "example"
+}
