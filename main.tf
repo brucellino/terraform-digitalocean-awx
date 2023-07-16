@@ -1,4 +1,8 @@
 # Project
+data "digitalocean_certificate" "selected" {
+  name = "cert"
+}
+
 data "digitalocean_project" "awx" {
   name = var.project_name
 }
@@ -42,26 +46,46 @@ resource "digitalocean_database_user" "awx_admin" {
 
 # vault role
 
+resource "helm_release" "nginx_ingress" {
+  name       = "nginx-ingress-controller"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+  chart      = "ingress-nginx"
+  set {
+    name  = "controller.publishService.enabled"
+    value = true
+  }
 
-resource "helm_release" "redis" {
-  name       = "my-redis-release"
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "awx-operator/awx-operator"
-  version    = "2.4.0"
-
-  # set {
-  #   name  = "cluster.enabled"
-  #   value = "true"
-  # }
-
-  # set {
-  #   name  = "metrics.enabled"
-  #   value = "true"
-  # }
-
-  # set {
-  #   name  = "service.annotations.prometheus\\.io/port"
-  #   value = "9127"
-  #   type  = "string"
-  # }
+  set {
+    name  = "installCRDs"
+    value = true
+  }
 }
+
+
+# resource "kubernetes_ingress_v1" "awx" {
+#   wait_for_load_balancer = true
+#   metadata {
+#     name = "awx"
+#     annotations = {
+#       "kubernetes.io/ingress.class" = "nginx"
+#     }
+#   }
+#   spec {
+#     rule {
+#       host = "awx.brucellino.dev"
+#       http {
+#         path {
+#           path = "/"
+#           backend {
+#             service {
+#               name = kubernetes_service.hello_world.metadata.0.name
+#               port {
+#                 number = 8080
+#               }
+#             }
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
