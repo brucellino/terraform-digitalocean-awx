@@ -61,7 +61,27 @@ resource "helm_release" "nginx_ingress" {
   }
 }
 
+locals {
+  awx_resources = {
+    namespace = "namespace.yml"
+  }
+}
 
+
+# resource "kubernetes_manifest" "awx" {
+#   depends_on = [data.digitalocean_kubernetes_cluster.selected]
+#   for_each   = local.awx_resources
+#   manifest   = yamldecode(file("${path.module}/files/awx/${each.value}"))
+# }
+
+resource "kubernetes_namespace_v1" "awx" {
+  metadata {
+    name = "awx"
+    labels = {
+      control-plane = "controller-manager"
+    }
+  }
+}
 # resource "kubernetes_ingress_v1" "awx" {
 #   wait_for_load_balancer = true
 #   metadata {
