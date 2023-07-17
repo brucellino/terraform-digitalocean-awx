@@ -84,3 +84,22 @@ provider "registry.terraform.io/hashicorp/vault" {
     "zh:f1c150dc13d6597ee08b83904fdd97a6702a106d3f524d60f048f2bd5c492f51",
   ]
 }
+
+provider "registry.terraform.io/kbst/kustomize" {
+  version     = "0.2.0-beta.3"
+  constraints = "0.2.0-beta.3"
+  hashes = [
+    "h1:LMeQVLfuBq8+B2SAegOs7OHjsYBv4uqLnp7pTF6r3y4=",
+    "zh:20cc88b3cb835b3c899e87a0739777285b1ce5230bfbe472e1b29fd33f05f000",
+    "zh:5746d71486055d58393d59ed1d5fd26bd4b59e1939c1d2c4e378c7a92af9c690",
+    "zh:5a80e3197a7174c0a46df8882d4af65ff75aad564d346f2640ec5e703f406d15",
+    "zh:6affa488261949e41e2afa99b8dcd74fb93f70bb313cfad4459d05f755ad073d",
+    "zh:724d7aecf731706492c1c26461a6c28b7e464c9b9c4d99798f29c29e2d53e9c3",
+    "zh:7b5ea3d95b21ccc51b7a663fda71dc1f66f13d412bd5329a86e3a4f7258da862",
+    "zh:af79e4b851bf5ec6c0e3e763596b8914d0a619449b426836e4eb79742bec8830",
+    "zh:b88f72fc0292ec88b2d6f7b5dc597ce58e24b3d1184830eb8b5df799b0a04740",
+    "zh:fc1e615ee330ea63abe3d89fe3020da4f568acb06eec18429f6470e2943fe031",
+    "zh:fd74a59c1e831d0f6098e31911706c3818899f51202f5194b102d1c9431209a7",
+    "zh:fe2f4dcccead9c14a345db02d5b6950e34ddd81abf7493d8455edee649d9a24c",
+  ]
+}
